@@ -5,6 +5,7 @@
   background-color: var(--background-color);
   background-image: var(--background-gradient);
   background-size: cover;
+  background-position: center;
   background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
@@ -60,11 +61,11 @@
   position: relative;
   font-size: 14px;
   line-height: 1;
+  transition: opacity 0.3s ease;
 }
 
 .theme-menu__item:hover {
   opacity: 0.6;
-  transition: opacity 0.3s ease;
 }
 
 .theme-menu__item:has(:disabled) {
@@ -77,6 +78,10 @@
   text-transform: uppercase;
 }
 
+.theme-menu__button:focus-visible {
+  opacity: 0.6;
+}
+
 .theme-menu__button::after {
   content: "";
   display: block;
@@ -84,12 +89,12 @@
   margin-block-start: 2px;
   opacity: 0.6;
   background-color: var(--accent-color);
-  transition: scale 0.3s ease;
-  scale: 0;
+  transition: width 0.3s ease;
+  width: 0%;
 }
 
 .theme-menu__button:focus-visible::after {
-  scale: 1;
+  width: 100%;
 }
 
 .theme-menu__item:has(:disabled)::before {
@@ -179,10 +184,9 @@
   font-weight: var(--card-text-weight);
   font-size: 18px;
   line-height: 1.17;
-}
-
-.card__text {
-  margin-block-end: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .button {
@@ -198,7 +202,7 @@
 }
 
 .card__icon-button:focus-visible {
-  border: 2px inset var(--accent-color);
+  border: 2px solid var(--accent-color);
 }
 
 .sparks {
@@ -216,13 +220,11 @@
   inline-size: 130px;
 }
 
-.card__like-button:focus-visible,
-.save-button:focus-visible {
+.text-button:focus-visible {
   box-shadow: 2px 2px 0 var(--accent-color);
 }
 
-.card__like-button::before,
-.save-button::before {
+.text-button::before {
   content: "";
   position: absolute;
   display: block;
@@ -234,8 +236,7 @@
   inset-block-start: 0;
 }
 
-.card__like-button:hover::before,
-.save-button:hover::before {
+.text-button:hover::before {
   width: 100%;
 }
 
@@ -276,7 +277,6 @@
   min-inline-size: 341px;
   max-inline-size: 357px;
   inline-size: 25%;
-  block-size: 193px;
 }
 
 dialog .save-button {
